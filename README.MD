@@ -129,6 +129,18 @@ Edit the `GLOBAL_VARIABLES.py` file to adjust parameters:
     python 0_preview_mosaics_then_upload_to_youtube.py
     ```
 
+## ComfyUI Workflow
+This repository now includes a custom [ComfyUI](https://github.com/comfyanonymous/ComfyUI) node bundle and
+an example workflow.  The bundle wraps the Python scripts above so the
+entire story pipeline can be executed from within ComfyUI with helpful
+preview nodes.  You can find the files here:
+
+- `comfyui_nodes/` – custom node definitions for each stage of the pipeline.
+- `comfyui_workflows/storyboard_pipeline.json` – example workflow connecting the nodes in order with image and video previews.
+
+Import the workflow into ComfyUI and ensure the repository is on the
+Python path to access the nodes.
+
 ## File Structure Overview
 Here is an overview of the project's directory structure:
 ```
