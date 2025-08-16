@@ -1,0 +1,37 @@
+{
+  "last_node_id": 15,
+  "last_link_id": 14,
+  "nodes": [
+    {"id": 1, "type": "DreamUpStory", "pos": [0, 0], "outputs": [{"name": "story_json", "type": "STRING", "links": [1]}]},
+    {"id": 2, "type": "BuildChapters", "pos": [240, 0], "inputs": [{"name": "story_json", "type": "STRING", "link": 1}], "outputs": [{"name": "story_json", "type": "STRING", "links": [2]}]},
+    {"id": 3, "type": "SummarizeChapters", "pos": [480, 0], "inputs": [{"name": "story_json", "type": "STRING", "link": 2}], "outputs": [{"name": "summary_json", "type": "STRING", "links": [3,9]}]},
+    {"id": 4, "type": "CreateImages", "pos": [720, 0], "inputs": [{"name": "summary_json", "type": "STRING", "link": 3}], "outputs": [{"name": "image_dir", "type": "STRING", "links": [4,10]}]},
+    {"id": 5, "type": "CreateUniqueCharacter", "pos": [960, 0], "inputs": [{"name": "summary_json", "type": "STRING", "link": 3}], "outputs": [{"name": "image_dir", "type": "STRING"}]},
+    {"id": 6, "type": "CreateMovie", "pos": [1200, 0], "inputs": [{"name": "image_dir", "type": "STRING", "link": 4}], "outputs": [{"name": "movie_path", "type": "STRING", "links": [5]}]},
+    {"id": 7, "type": "CreateMosaic", "pos": [1440, 0], "inputs": [{"name": "movie_path", "type": "STRING", "link": 5}], "outputs": [{"name": "mosaic_path", "type": "STRING", "links": [6]}]},
+    {"id": 8, "type": "ZoomPanMovie", "pos": [1680, 0], "inputs": [{"name": "mosaic_path", "type": "STRING", "link": 6}], "outputs": [{"name": "video_path", "type": "STRING", "links": [7]}]},
+    {"id": 9, "type": "AddSubtitles", "pos": [1920, 0], "inputs": [{"name": "video_path", "type": "STRING", "link": 7}], "outputs": [{"name": "video_path", "type": "STRING", "links": [8,12]}]},
+    {"id": 10, "type": "PreviewAndUpload", "pos": [2160, 0], "inputs": [{"name": "video_path", "type": "STRING", "link": 8}], "outputs": []},
+    {"id": 11, "type": "CreateVoiceover", "pos": [720, 240], "inputs": [{"name": "summary_json", "type": "STRING", "link": 9}], "outputs": [{"name": "audio_path", "type": "STRING"}]},
+    {"id": 12, "type": "Load Image", "pos": [720, 160], "inputs": [{"name": "image_path", "type": "STRING", "link": 10}], "outputs": [{"name": "image", "type": "IMAGE", "links": [11]}]},
+    {"id": 13, "type": "PreviewImage", "pos": [720, 320], "inputs": [{"name": "images", "type": "IMAGE", "link": 11}], "outputs": []},
+    {"id": 14, "type": "Load Video", "pos": [1920, 160], "inputs": [{"name": "video_path", "type": "STRING", "link": 12}], "outputs": [{"name": "video", "type": "VIDEO", "links": [13]}]},
+    {"id": 15, "type": "PreviewVideo", "pos": [1920, 320], "inputs": [{"name": "video", "type": "VIDEO", "link": 13}], "outputs": []}
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "STRING"],
+    [2, 2, 0, 3, 0, "STRING"],
+    [3, 3, 0, 4, 0, "STRING"],
+    [4, 4, 0, 6, 0, "STRING"],
+    [5, 6, 0, 7, 0, "STRING"],
+    [6, 7, 0, 8, 0, "STRING"],
+    [7, 8, 0, 9, 0, "STRING"],
+    [8, 9, 0, 10, 0, "STRING"],
+    [9, 3, 0, 11, 0, "STRING"],
+    [10, 4, 0, 12, 0, "STRING"],
+    [11, 12, 0, 13, 0, "IMAGE"],
+    [12, 9, 0, 14, 0, "STRING"],
+    [13, 14, 0, 15, 0, "VIDEO"]
+  ],
+  "groups": []
+}
